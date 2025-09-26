@@ -207,7 +207,7 @@ fields @timestamp, @message
 | filter @message like /REPORT/
 | parse @message /REPORT RequestId: (?<req_id>[0-9a-f-]+)\s+Duration: (?<dur_ms>[\d.]+) ms\s+Billed Duration: (?<billed_ms>[\d.]+) ms(?:\s+Init Duration: (?<init_ms>[\d.]+) ms)?\s+Memory Size: (?<mem_mb>\d+) MB/
 | sort @timestamp asc
-| fields @timestamp, req_id, dur_ms, billed_ms, init_ms, mem_mb
+| display @timestamp, req_id, dur_ms, billed_ms, init_ms, mem_mb
 ```
 
 > A primeira linha (com **Init Duration**) é o **WARMUP** → descarte. As duas seguintes são **SMALL** e **LARGE**, na ordem enviada.
